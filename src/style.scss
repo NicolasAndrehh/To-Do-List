@@ -15,8 +15,8 @@ body {
 
 .tasks-list {
   width: 30rem;
-  box-shadow: 0px 0px 14px 1px rgb(190, 190, 190);
-  padding: 0rem;
+  box-shadow: 0 0 14px 1px rgb(190, 190, 190);
+  padding: 0;
   margin: auto;
 
   .row {
@@ -43,7 +43,7 @@ body {
   }
 
   .tasks-list-input {
-    padding: 0rem;
+    padding: 0;
     border: none;
     position: relative;
 
@@ -51,7 +51,9 @@ body {
       width: 100%;
       padding: 1rem;
       border: 1px solid $gray;
-    }::placeholder {
+    }
+
+    ::placeholder {
       font-size: 0.95rem;
       font-style: italic;
     }
@@ -62,9 +64,9 @@ body {
       right: 1rem;
     }
   }
-  
+
   .clear-completed-row {
-    padding: 0rem;
+    padding: 0;
     border: none;
 
     button {
@@ -75,9 +77,10 @@ body {
       color: #868686;
       font-size: 0.95rem;
       cursor: pointer;
-    }:hover {
+    }
+
+    :hover {
       text-decoration: underline;
     }
   }
-  
 }
