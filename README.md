@@ -123,7 +123,13 @@ Install this project with:
 
 To run the project, execute the following command:
 
-- This project doesn't need any command to run
+```sh
+  npm run build
+```
+
+```sh
+  npm start
+```
 
 ### Run tests
 

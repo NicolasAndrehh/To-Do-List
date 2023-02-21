@@ -9,6 +9,7 @@ module.exports = {
     clean: true,
   },
   devServer: {
+
     watchFiles: './dist',
     hot: false,
   },
@@ -25,6 +26,10 @@ module.exports = {
       {
         test: /\.s[ac]ss$/i,
         use: ['style-loader', 'css-loader', 'sass-loader'],
+      },
+      {
+        test: /\.svg$/,
+        use: 'svg-inline-loader',
       },
     ],
   },
