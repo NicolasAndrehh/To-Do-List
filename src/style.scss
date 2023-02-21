@@ -1,10 +1,91 @@
-$text-color: red;
-$bg-color: bisque;
+$white: #fff;
+$gray: #ccc;
 
-.hello {
-  color: $text-color;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  background-color: $bg-color;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  background-color: $white;
+  padding: 5rem;
+
+  h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+}
+
+.tasks-list {
+  width: 30rem;
+  box-shadow: 0 0 14px 1px rgb(190, 190, 190);
+  padding: 0;
+  margin: auto;
+
+  .row {
+    display: flex;
+    background-color: $white;
+    padding: 1rem;
+    border: 1px solid $gray;
+    justify-content: space-between;
+    align-items: center;
+
+    input[type="checkbox"] {
+      cursor: pointer;
+      width: 1rem;
+    }
+
+    i {
+      cursor: pointer;
+    }
+  }
+
+  .task-info {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .tasks-list-input {
+    padding: 0;
+    border: none;
+    position: relative;
+
+    input {
+      width: 100%;
+      padding: 1rem;
+      border: 1px solid $gray;
+    }
+
+    ::placeholder {
+      font-size: 0.95rem;
+      font-style: italic;
+    }
+
+    i {
+      position: absolute;
+      transform: rotate(90deg);
+      right: 1rem;
+    }
+  }
+
+  .clear-completed-row {
+    padding: 0;
+    border: none;
+
+    button {
+      width: 100%;
+      padding: 1rem;
+      background-color: #eee;
+      border: 1px solid $gray;
+      color: #868686;
+      font-size: 0.95rem;
+      cursor: pointer;
+    }
+
+    :hover {
+      text-decoration: underline;
+    }
+  }
 }

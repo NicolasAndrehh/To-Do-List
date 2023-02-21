@@ -9,7 +9,9 @@ module.exports = {
     clean: true,
   },
   devServer: {
-    static: './dist',
+
+    watchFiles: './dist',
+    hot: false,
   },
   optimization: {
     runtimeChunk: 'single',
@@ -25,7 +27,12 @@ module.exports = {
         test: /\.s[ac]ss$/i,
         use: ['style-loader', 'css-loader', 'sass-loader'],
       },
+      {
+        test: /\.svg$/,
+        use: 'svg-inline-loader',
+      },
     ],
   },
+  target: 'web',
   mode: 'development',
 };
