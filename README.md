@@ -2,7 +2,7 @@
 
 <div align="center">
 
-  <h1><b>Webpack</b></h1>
+  <h1><b>To Do List</b></h1>
 
 </div>
 
@@ -32,10 +32,10 @@
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 [Webpack] <a name="about-project"></a>
+# 📖 [To-Do-List] <a name="about-project"></a>
 
 
-**[Webpack]** project is about setting up a webpack boilerplate.
+**[To-Do-List]** is a tool that helps to organize your day. It simply lists the things that you need to do and allows you to mark them as complete.
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -46,7 +46,7 @@
   <summary>Client</summary>
   <ul>
     <li>HTML</li>
-    <li>CSS</li>
+    <li>SCSS</li>
     <li>JavaScript</li>
     <li>Webpack</li>
   </ul>
@@ -80,7 +80,7 @@
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-[Webpack - Live Demo](https://nicolasandrehh.github.io/webpack/)
+[To-Do-List - Live Demo](https://nicolasandrehh.github.io/To-Do-List/)
 
 <p align="right"><a href="#readme-top">Back to top</a></p>
 
@@ -108,7 +108,7 @@ Example command:
 Clone this repository to your desired folder:
 
 ```sh
-  git clone git@github.com:NicolasAndrehh/Webpack-Boilerplate.git
+  git clone git@github.com:NicolasAndrehh/To-Do-List.git
 ```
 
 ### Install

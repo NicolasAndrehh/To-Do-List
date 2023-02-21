@@ -9,7 +9,8 @@ module.exports = {
     clean: true,
   },
   devServer: {
-    static: './dist',
+    watchFiles: './dist',
+    hot: false,
   },
   optimization: {
     runtimeChunk: 'single',
@@ -27,5 +28,6 @@ module.exports = {
       },
     ],
   },
+  target: 'web',
   mode: 'development',
 };
