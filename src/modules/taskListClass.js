@@ -43,7 +43,7 @@ export default class TaskList {
 
     // Create task list form
     const tasksListInput = document.createElement('li');
-    tasksListInput.innerHTML = '<form action="" class="tasks-list-form row"><input type="text" placeholder="Add to your list..."> <button type="submit"><i class="fas fa-level-down-alt"></i></button></form>';
+    tasksListInput.innerHTML = '<form action="" class="tasks-list-form row"><input type="text" placeholder="Add to your list..." required> <button type="submit"><i class="fas fa-level-down-alt"></i></button></form>';
     tasksList.appendChild(tasksListInput);
 
     // Create task rows
@@ -61,16 +61,19 @@ export default class TaskList {
 
       // Using checkboxStatus to set the dynamic HTML content
       let checkboxInput = '';
+      let taskDescription = '';
       let icons = '';
       if (checkboxStatus && checkboxStatus[task.index]) {
         checkboxInput = '<input type="checkbox" checked>';
+        taskDescription = `<label class='completed-task-text'>${task.description}</label>`;
         icons = '<i class="fa fa-ellipsis-v hide"></i> <i class="fa-solid fa-trash"></i>';
       } else {
         checkboxInput = '<input type="checkbox">';
+        taskDescription = `<label>${task.description}</label>`;
         icons = '<i class="fa fa-ellipsis-v"></i> <i class="fa-solid fa-trash hide"></i>';
       }
 
-      taskRow.innerHTML = `<div class="task-info"> ${checkboxInput} <label>${task.description}</label> <input type="text" class="edit-description hide"> </div> ${icons}`;
+      taskRow.innerHTML = `<div class="task-info"> ${checkboxInput} ${taskDescription} <input type="text" class="edit-description hide"> </div> ${icons}`;
 
       tasksList.appendChild(taskRow);
     });
@@ -109,12 +112,14 @@ export default class TaskList {
         const taskRow = checkboxInput.parentNode.parentNode;
         const ellipsisIcon = taskRow.querySelector('.fa-ellipsis-v');
         const trashIcon = taskRow.querySelector('.fa-trash');
+        const taskDescription = taskRow.querySelector('.task-info label');
 
         const checkboxStatus = [];
         if (checkboxInput.checked) {
           // Show trash icon and add task to completed tasks array
           ellipsisIcon.classList.add('hide');
           trashIcon.classList.remove('hide');
+          taskDescription.classList.add('completed-task-text');
           completedTasks.push(Number(taskRow.id));
 
           // Set checkbox status true
@@ -127,6 +132,7 @@ export default class TaskList {
           // Show ellipsis icon and remove task from completed tasks array
           ellipsisIcon.classList.remove('hide');
           trashIcon.classList.add('hide');
+          taskDescription.classList.remove('completed-task-text');
           completedTasks = completedTasks.filter((id) => Number(taskRow.id) !== id);
 
           // Set checkbox status false
