@@ -23,6 +23,7 @@ body {
   box-shadow: 0 0 14px 1px rgb(190, 190, 190);
   padding: 0;
   margin: auto;
+  list-style: none;
 
   .row {
     display: flex;
@@ -47,7 +48,7 @@ body {
     gap: 1rem;
   }
 
-  .tasks-list-input {
+  .tasks-list-form {
     padding: 0;
     border: none;
     position: relative;
@@ -63,10 +64,18 @@ body {
       font-style: italic;
     }
 
-    i {
+    button {
       position: absolute;
+      right: 0;
+      width: 3.25rem;
+      height: 100%;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    i {
       transform: rotate(90deg);
-      right: 1rem;
     }
   }
 
