@@ -18,6 +18,10 @@ body {
   }
 }
 
+.hide {
+  display: none !important;
+}
+
 .tasks-list {
   width: 30rem;
   box-shadow: 0 0 14px 1px rgb(190, 190, 190);
@@ -25,10 +29,14 @@ body {
   margin: auto;
   list-style: none;
 
+  h3 {
+    padding: 1rem 0rem;
+  }
+
   .row {
     display: flex;
     background-color: $white;
-    padding: 1rem;
+    padding: 0rem 1rem;
     border: 1px solid $gray;
     justify-content: space-between;
     align-items: center;
@@ -36,6 +44,12 @@ body {
     input[type="checkbox"] {
       cursor: pointer;
       width: 1rem;
+    }
+
+    .edit-description {
+      width: 90%;
+      padding: 1.125rem;
+      border: none;
     }
 
     i {
@@ -46,6 +60,12 @@ body {
   .task-info {
     display: flex;
     gap: 1rem;
+    width: 95%;
+
+    label {
+      width: 90%;
+      padding: 1rem 0rem;
+    }
   }
 
   .tasks-list-form {
