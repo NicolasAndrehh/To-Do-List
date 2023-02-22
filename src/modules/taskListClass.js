@@ -1,4 +1,4 @@
-import Task from './taksClass';
+import Task from './taksClass.js';
 
 export default class TaskList {
   constructor() {

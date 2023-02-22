@@ -40,14 +40,14 @@ body {
   list-style: none;
 
   h3 {
-    padding: 1rem 0rem;
+    padding: 1rem 0;
   }
 
   .row {
     display: flex;
     background-color: $table-bg;
     color: $font-color;
-    padding: 0rem 1rem;
+    padding: 0 1rem;
     border: 1px solid $border-color;
     justify-content: space-between;
     align-items: center;
@@ -77,7 +77,7 @@ body {
 
     label {
       width: 90%;
-      padding: 1rem 0rem;
+      padding: 1rem 0;
     }
   }
 
