@@ -1,4 +1,7 @@
 import Task from './taksClass.js';
+import {
+  checkboxValidation, clearCompletedTasks, getLocalStorage, setLocalStorage,
+} from './interactiveFunctions.js';
 
 export default class TaskList {
   constructor() {
@@ -7,7 +10,7 @@ export default class TaskList {
 
   addTask(task) {
     this.Tasks.push(new Task(task, this.Tasks.length));
-    localStorage.setItem('taskList', JSON.stringify(this.Tasks));
+    setLocalStorage('taskList', JSON.stringify(this.Tasks));
     this.showListElements();
   }
 
@@ -26,8 +29,8 @@ export default class TaskList {
     });
 
     // Set local storage
-    localStorage.setItem('taskList', JSON.stringify(this.Tasks));
-    localStorage.setItem('checkboxStatus', JSON.stringify(checkboxStatus));
+    setLocalStorage('taskList', JSON.stringify(this.Tasks));
+    setLocalStorage('checkboxStatus', JSON.stringify(checkboxStatus));
 
     this.showListElements();
   }
@@ -48,12 +51,12 @@ export default class TaskList {
 
     // Create task rows
     let checkboxStatus;
-    if (localStorage.getItem('checkboxStatus')) {
-      checkboxStatus = JSON.parse(localStorage.getItem('checkboxStatus'));
+    if (getLocalStorage('checkboxStatus')) {
+      checkboxStatus = getLocalStorage('checkboxStatus');
     }
     this.Tasks.forEach((task) => {
       // Setting localstorage to display correctly the checkboxes and icons
-      if (localStorage.getItem('checkboxStatus')) task.completed = checkboxStatus[task.index];
+      if (getLocalStorage('checkboxStatus')) task.completed = checkboxStatus[task.index];
 
       const taskRow = document.createElement('li');
       taskRow.className = 'task-row row';
@@ -95,57 +98,8 @@ export default class TaskList {
       });
     });
 
-    // Checkboxes event listerner
-    const checkboxInputs = document.querySelectorAll('input[type="checkbox"]');
-    let completedTasks = [];
-
-    // Setting local storage completed tasks if exist
-    if (localStorage.getItem('checkboxStatus')) {
-      const checkboxStatus = JSON.parse(localStorage.getItem('checkboxStatus'));
-
-      for (let index = 0; index < checkboxStatus.length; index += 1) {
-        if (checkboxStatus[index] === true) completedTasks.push(index);
-      }
-    }
-    checkboxInputs.forEach((checkboxInput) => {
-      checkboxInput.addEventListener('change', () => {
-        const taskRow = checkboxInput.parentNode.parentNode;
-        const ellipsisIcon = taskRow.querySelector('.fa-ellipsis-v');
-        const trashIcon = taskRow.querySelector('.fa-trash');
-        const taskDescription = taskRow.querySelector('.task-info label');
-
-        const checkboxStatus = [];
-        if (checkboxInput.checked) {
-          // Show trash icon and add task to completed tasks array
-          ellipsisIcon.classList.add('hide');
-          trashIcon.classList.remove('hide');
-          taskDescription.classList.add('completed-task-text');
-          completedTasks.push(Number(taskRow.id));
-
-          // Set checkbox status true
-          this.Tasks[Number(taskRow.id)].completed = true;
-          this.Tasks.forEach((task) => {
-            checkboxStatus.push(task.completed);
-          });
-          localStorage.setItem('checkboxStatus', JSON.stringify(checkboxStatus));
-        } else {
-          // Show ellipsis icon and remove task from completed tasks array
-          ellipsisIcon.classList.remove('hide');
-          trashIcon.classList.add('hide');
-          taskDescription.classList.remove('completed-task-text');
-          completedTasks = completedTasks.filter((id) => Number(taskRow.id) !== id);
-
-          // Set checkbox status false
-          this.Tasks[Number(taskRow.id)].completed = false;
-          this.Tasks.forEach((task) => {
-            checkboxStatus.push(task.completed);
-          });
-          localStorage.setItem('checkboxStatus', JSON.stringify(checkboxStatus));
-        }
-
-        // Set checkbox status on localstorage
-      });
-    });
+    // Checkboxes event listerner validation
+    const completedTasks = checkboxValidation(this.Tasks);
 
     // Form event listener
     const taskListForm = document.querySelector('.tasks-list-form');
@@ -156,10 +110,8 @@ export default class TaskList {
     });
 
     // Clear completed tasks event listener
-    const clearCompletedButton = document.querySelector('.clear-completed-button');
-    clearCompletedButton.addEventListener('click', () => {
-      this.deleteTask(completedTasks);
-    });
+    const taskList = this;
+    clearCompletedTasks(taskList, completedTasks);
 
     // Toggle edit description
     const taskDescriptions = document.querySelectorAll('.task-info label');
