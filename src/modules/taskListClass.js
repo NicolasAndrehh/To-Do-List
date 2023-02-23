@@ -1,5 +1,8 @@
 import { checkboxValidation, setLocalStorage } from './interactiveFunctions.js';
 import Task from './taksClass.js';
+import {
+  checkboxValidation, clearCompletedTasks, getLocalStorage, setLocalStorage,
+} from './interactiveFunctions.js';
 
 export default class TaskList {
   constructor() {
@@ -52,12 +55,12 @@ export default class TaskList {
 
     // Create task rows
     let checkboxStatus;
-    if (localStorage.getItem('checkboxStatus')) {
-      checkboxStatus = JSON.parse(localStorage.getItem('checkboxStatus'));
+    if (getLocalStorage('checkboxStatus')) {
+      checkboxStatus = getLocalStorage('checkboxStatus');
     }
     this.Tasks.forEach((task) => {
       // Setting localstorage to display correctly the checkboxes and icons
-      if (localStorage.getItem('checkboxStatus')) task.completed = checkboxStatus[task.index];
+      if (getLocalStorage('checkboxStatus')) task.completed = checkboxStatus[task.index];
 
       const taskRow = document.createElement('li');
       taskRow.className = 'task-row row';
