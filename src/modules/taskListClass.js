@@ -1,7 +1,6 @@
-import { checkboxValidation, setLocalStorage } from './interactiveFunctions.js';
 import Task from './taksClass.js';
 import {
-  checkboxValidation, clearCompletedTasks, getLocalStorage, setLocalStorage,
+  checkboxValidation, getLocalStorage, setLocalStorage,
 } from './interactiveFunctions.js';
 
 export default class TaskList {
@@ -12,7 +11,6 @@ export default class TaskList {
   addTask(task) {
     this.Tasks.push(new Task(task, undefined, this.Tasks.length));
     setLocalStorage('taskList', this.Tasks);
-    console.log(this.Tasks);
 
     this.showListElements();
     checkboxValidation(this.Tasks);

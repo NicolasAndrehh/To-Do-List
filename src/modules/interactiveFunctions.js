@@ -35,7 +35,6 @@ function checkboxValidation(taskList) {
 
         // Set checkbox status true
         taskList[Number(taskRow.id)].completed = true;
-        console.log(taskList[Number(taskRow.id)]);
         setLocalStorage('taskList', taskList);
         taskList.forEach((task) => {
           checkboxStatus.push(task.completed);
@@ -50,7 +49,6 @@ function checkboxValidation(taskList) {
 
         // Set checkbox status false
         taskList[Number(taskRow.id)].completed = false;
-        console.log(taskList[Number(taskRow.id)]);
         setLocalStorage('taskList', taskList);
         taskList.forEach((task) => {
           checkboxStatus.push(task.completed);
