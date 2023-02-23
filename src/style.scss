@@ -1,5 +1,10 @@
 $white: #fff;
 $gray: #ccc;
+$background: #1a1330;
+$font-color: #fff;
+$table-bg: #3d2a75;
+$border-color: #000;
+$clear-button-bg: #150936;
 
 * {
   margin: 0;
@@ -9,32 +14,55 @@ $gray: #ccc;
 
 body {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  background-color: $white;
+  background-color: $background;
   padding: 5rem;
 
   h1 {
     text-align: center;
     margin-bottom: 2rem;
+    color: $font-color;
   }
+}
+
+.hide {
+  display: none !important;
+}
+
+.completed-task-text {
+  text-decoration: line-through;
 }
 
 .tasks-list {
   width: 30rem;
-  box-shadow: 0 0 14px 1px rgb(190, 190, 190);
+  box-shadow: 0 0 14px 2px rgb(190, 190, 190);
   padding: 0;
   margin: auto;
+  list-style: none;
+
+  h3 {
+    padding: 1rem 0;
+  }
 
   .row {
     display: flex;
-    background-color: $white;
-    padding: 1rem;
-    border: 1px solid $gray;
+    background-color: $table-bg;
+    color: $font-color;
+    padding: 0 1rem;
+    border: 1px solid $border-color;
     justify-content: space-between;
     align-items: center;
 
     input[type="checkbox"] {
       cursor: pointer;
       width: 1rem;
+    }
+
+    .edit-description {
+      width: 90%;
+      padding: 1.125rem;
+      border: none;
+      background-color: $table-bg;
+      color: $font-color;
     }
 
     i {
@@ -45,9 +73,15 @@ body {
   .task-info {
     display: flex;
     gap: 1rem;
+    width: 95%;
+
+    label {
+      width: 90%;
+      padding: 1rem 0;
+    }
   }
 
-  .tasks-list-input {
+  .tasks-list-form {
     padding: 0;
     border: none;
     position: relative;
@@ -55,18 +89,30 @@ body {
     input {
       width: 100%;
       padding: 1rem;
-      border: 1px solid $gray;
+      border: 1px solid $border-color;
+      background-color: $table-bg;
+      color: $font-color;
     }
 
     ::placeholder {
       font-size: 0.95rem;
       font-style: italic;
+      color: $gray;
+    }
+
+    button {
+      position: absolute;
+      right: 0;
+      width: 3.25rem;
+      height: 100%;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: $font-color;
     }
 
     i {
-      position: absolute;
       transform: rotate(90deg);
-      right: 1rem;
     }
   }
 
@@ -77,9 +123,9 @@ body {
     button {
       width: 100%;
       padding: 1rem;
-      background-color: #eee;
-      border: 1px solid $gray;
-      color: #868686;
+      background-color: $clear-button-bg;
+      border: 1px solid $border-color;
+      color: $font-color;
       font-size: 0.95rem;
       cursor: pointer;
     }
