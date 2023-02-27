@@ -43,12 +43,12 @@ export default class TaskList {
     const tasksListHeader = document.createElement('div');
     tasksList.innerHTML = '';
     tasksListHeader.className = 'tasks-list-header row';
-    tasksListHeader.innerHTML = '<h3>Today\'s To Do</h3> <i class="fa-solid fa-rotate"></i>';
+    tasksListHeader.insertAdjacentHTML('afterbegin', '<h3>Today\'s To Do</h3> <i class="fa-solid fa-rotate"></i>');
     tasksList.appendChild(tasksListHeader);
 
     // Create task list form
     const tasksListInput = document.createElement('li');
-    tasksListInput.innerHTML = '<form action="" class="tasks-list-form row"><input type="text" placeholder="Add to your list..." required> <button type="submit"><i class="fas fa-level-down-alt"></i></button></form>';
+    tasksListInput.insertAdjacentHTML('afterbegin', '<form action="" class="tasks-list-form row"><input type="text" placeholder="Add to your list..." required> <button type="submit"><i class="fas fa-level-down-alt"></i></button></form>');
     tasksList.appendChild(tasksListInput);
 
     // Create task rows
@@ -78,7 +78,7 @@ export default class TaskList {
         icons = '<i class="fa fa-ellipsis-v"></i> <i class="fa-solid fa-trash hide"></i>';
       }
 
-      taskRow.innerHTML = `<div class="task-info"> ${checkboxInput} ${taskDescription} <input type="text" class="edit-description hide"> </div> ${icons}`;
+      taskRow.insertAdjacentHTML('afterbegin', `<div class="task-info"> ${checkboxInput} ${taskDescription} <input type="text" class="edit-description hide"> </div> ${icons}`);
 
       tasksList.appendChild(taskRow);
     });
@@ -86,7 +86,7 @@ export default class TaskList {
     // Create clear completed row
     const clearCompletedRow = document.createElement('div');
     clearCompletedRow.className = 'clear-completed-row row';
-    clearCompletedRow.innerHTML = '<button class="clear-completed-button">Clear all completed</button>';
+    clearCompletedRow.insertAdjacentHTML('afterbegin', '<button class="clear-completed-button">Clear all completed</button>');
     tasksList.appendChild(clearCompletedRow);
   }
 
